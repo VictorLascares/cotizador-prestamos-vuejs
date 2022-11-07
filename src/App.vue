@@ -2,7 +2,10 @@
 import { ref } from "vue";
 import Header from "./components/Header.vue";
 
-const amount = ref(0);
+const amount = ref(10000);
+const MIN = 0;
+const MAX = 20000;
+const STEP = 100;
 
 function handleInput(e) {
   amount.value = Number(e.target.value);
@@ -17,6 +20,10 @@ function handleInput(e) {
       <input
         type="range"
         class="w-full bg-gray-200 accent-lime-500 hover:accent-lime-600"
+        :min="MIN"
+        :max="MAX"
+        :step="STEP"
+        :value="amount"
         @input="handleInput"
       />
       <p v-text="amount"></p>
