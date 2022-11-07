@@ -1,7 +1,9 @@
 <script setup>
-
+  import Header from './components/Header.vue';
 </script>
 
 <template>
-  <h1 class="text-red-600">Hola Mundo</h1>
+  <div class="my-20 max-w-lg mx-auto bg-white shadow p-10">
+    <Header />
+  </div>
 </template>
