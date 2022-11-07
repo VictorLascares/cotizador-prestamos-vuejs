@@ -1,9 +1,18 @@
 <script setup>
-  import Header from './components/Header.vue';
+import { ref, reactive } from "vue";
+import Header from "./components/Header.vue";
 
-  function handleInput(e) {
-    console.log(e.target.value);
-  }
+const amount = ref(0);
+const state = reactive({
+  amount: 0,
+});
+
+function handleInput(e) {
+  console.log(e.target.value);
+}
+
+console.log(amount.value);
+console.log(state.amount);
 </script>
 
 <template>
@@ -11,11 +20,11 @@
     <Header />
 
     <div class="my-5">
-      <input 
+      <input
         type="range"
         class="w-full bg-gray-200 accent-lime-500 hover:accent-lime-600"
         @input="handleInput"
-      >
+      />
     </div>
   </div>
 </template>
