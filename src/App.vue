@@ -1,18 +1,12 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import Header from "./components/Header.vue";
 
 const amount = ref(0);
-const state = reactive({
-  amount: 0,
-});
 
 function handleInput(e) {
-  state.amount = Number(e.target.value);
+  amount.value = Number(e.target.value);
 }
-
-console.log(amount.value);
-console.log(state.amount);
 </script>
 
 <template>
@@ -25,7 +19,7 @@ console.log(state.amount);
         class="w-full bg-gray-200 accent-lime-500 hover:accent-lime-600"
         @input="handleInput"
       />
-      {{ state.amount }}
+      <p v-text="amount"></p>
     </div>
   </div>
 </template>
