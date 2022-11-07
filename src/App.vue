@@ -8,7 +8,7 @@ const state = reactive({
 });
 
 function handleInput(e) {
-  amount.value = Number(e.target.value);
+  state.amount = Number(e.target.value);
 }
 
 console.log(amount.value);
@@ -25,7 +25,7 @@ console.log(state.amount);
         class="w-full bg-gray-200 accent-lime-500 hover:accent-lime-600"
         @input="handleInput"
       />
-      {{ amount }}
+      {{ state.amount }}
     </div>
   </div>
 </template>
