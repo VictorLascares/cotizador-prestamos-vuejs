@@ -15,11 +15,46 @@ const formatMoney = computed(() => {
 
   return formatter.format(amount.value);
 });
+
+function handleClickDecrement() {
+  const value = amount.value - STEP;
+
+  if (value < MIN) {
+    alert("Cantidad no valida");
+    return;
+  }
+  amount.value = value;
+}
+
+function handleClickIncrease() {
+  const value = amount.value + STEP;
+
+  if (value > MAX) {
+    alert("Cantidad no valida");
+    return;
+  }
+  amount.value = value;
+}
 </script>
 
 <template>
   <div class="my-20 max-w-lg mx-auto bg-white shadow p-10">
     <Header />
+
+    <div class="flex justify-between mt-10">
+      <button
+        class="h-10 w-10 items-center justify-center font-bold bg-lime-500 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-lime-500 text-white text-2xl"
+        @click="handleClickDecrement"
+      >
+        &#8722;
+      </button>
+      <button
+        class="h-10 w-10 items-center justify-center font-bold bg-lime-500 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-lime-500 text-white text-2xl"
+        @click="handleClickIncrease"
+      >
+        &#43;
+      </button>
+    </div>
 
     <div class="my-5">
       <input
