@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
 import { formatMoney, calculateTotalPay } from "./helpers";
@@ -14,6 +14,10 @@ const STEP = 100;
 
 watch([amount, term], () => {
   total.value = calculateTotalPay(amount.value, term.value);
+});
+
+const monthlyPayment = computed(() => {
+  return total.value / term.value;
 });
 
 function handleClickDecrement() {
@@ -85,7 +89,9 @@ function handleClickIncrease() {
       <p class="text-xl text-gray-500 text-center font-bold">
         {{ formatMoney(total) }} total a pagar
       </p>
-      <p class="text-xl text-gray-500 text-center font-bold">mensuales</p>
+      <p class="text-xl text-gray-500 text-center font-bold">
+        {{ formatMoney(monthlyPayment) }} mensuales
+      </p>
     </div>
 
     <p v-else class="font-extrabold text-gray-500 text-center">
