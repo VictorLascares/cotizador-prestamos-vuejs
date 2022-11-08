@@ -2,9 +2,12 @@
 import { ref, computed } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
+import { calculateTotalPay } from "./helpers";
 
 const amount = ref(10000);
 const term = ref(6);
+const total = ref(calculateTotalPay(amount.value, term));
+
 const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
