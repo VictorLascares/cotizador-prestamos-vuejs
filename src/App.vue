@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import Header from "./components/Header.vue";
+import Button from "./components/Button.vue";
 
 const amount = ref(10000);
 const MIN = 0;
@@ -42,18 +43,16 @@ function handleClickIncrease() {
     <Header />
 
     <div class="flex justify-between mt-10">
-      <button
-        class="h-10 w-10 items-center justify-center font-bold bg-lime-500 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-lime-500 text-white text-2xl"
-        @click="handleClickDecrement"
+      <Button
+        @fn="handleClickDecrement"
       >
         &#8722;
-      </button>
-      <button
-        class="h-10 w-10 items-center justify-center font-bold bg-lime-500 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 hover:ring-lime-500 text-white text-2xl"
-        @click="handleClickIncrease"
+      </Button>
+      <Button
+        @fn="handleClickIncrease"
       >
         &#43;
-      </button>
+      </Button>
     </div>
 
     <div class="my-5">
