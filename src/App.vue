@@ -7,9 +7,6 @@ const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
 
-function handleInput(e) {
-  amount.value = Number(e.target.value);
-}
 </script>
 
 <template>
@@ -23,8 +20,7 @@ function handleInput(e) {
         :min="MIN"
         :max="MAX"
         :step="STEP"
-        :value="amount"
-        @input="handleInput"
+        v-model.number="amount"
       />
       <p v-text="amount"></p>
     </div>
