@@ -14,7 +14,7 @@ const STEP = 100;
 
 watch([amount, term], () => {
   total.value = calculateTotalPay(amount.value, term.value);
-}, { immediate: true });
+});
 
 function handleClickDecrement() {
   const value = amount.value - STEP;
@@ -74,7 +74,7 @@ function handleClickIncrease() {
       </select>
     </div>
 
-    <div class="my-5 space-y-3 bg-gray-50 p-5">
+    <div v-if="total" class="my-5 space-y-3 bg-gray-50 p-5">
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
         Resumen <span class="text-indigo-600">de pagos</span>
       </h2>
@@ -87,5 +87,9 @@ function handleClickIncrease() {
       </p>
       <p class="text-xl text-gray-500 text-center font-bold">mensuales</p>
     </div>
+
+    <p v-else class="font-extrabold text-gray-500 text-center">
+      Añade una cantidad y un plazo a pagar
+    </p>
   </div>
 </template>
