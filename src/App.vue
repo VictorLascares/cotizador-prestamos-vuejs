@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
-import { calculateTotalPay } from "./helpers";
+import { formatMoney, calculateTotalPay } from "./helpers";
 
 const amount = ref(10000);
 const term = ref(6);
@@ -11,15 +11,6 @@ const total = ref(calculateTotalPay(amount.value, term));
 const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
-
-const formatMoney = computed(() => {
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-
-  return formatter.format(amount.value);
-});
 
 function handleClickDecrement() {
   const value = amount.value - STEP;
@@ -61,7 +52,7 @@ function handleClickIncrease() {
         v-model.number="amount"
       />
       <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">
-        {{ formatMoney }}
+        {{ formatMoney(amount) }}
       </p>
 
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
@@ -87,7 +78,9 @@ function handleClickIncrease() {
       <p class="text-xl text-gray-500 text-center font-bold">
         {{ term }} meses
       </p>
-      <p class="text-xl text-gray-500 text-center font-bold">total a pagar</p>
+      <p class="text-xl text-gray-500 text-center font-bold">
+        {{ formatMoney(total) }} total a pagar
+      </p>
       <p class="text-xl text-gray-500 text-center font-bold">mensuales</p>
     </div>
   </div>

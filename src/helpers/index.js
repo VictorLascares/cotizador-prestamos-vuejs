@@ -1,3 +1,12 @@
+const formatMoney = (value) => {
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  return formatter.format(value);
+};
+
 const calculateTotalPay = (amount, term) => {
   let total;
 
@@ -25,4 +34,4 @@ const calculateTotalPay = (amount, term) => {
   return total;
 }
 
-export { calculateTotalPay }
+export { formatMoney, calculateTotalPay }
