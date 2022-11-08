@@ -1,16 +1,20 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, watch } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
 import { formatMoney, calculateTotalPay } from "./helpers";
 
 const amount = ref(10000);
 const term = ref(6);
-const total = ref(calculateTotalPay(amount.value, term));
+const total = ref(0);
 
 const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
+
+watch([amount, term], () => {
+  total.value = calculateTotalPay(amount.value, term.value);
+}, { immediate: true });
 
 function handleClickDecrement() {
   const value = amount.value - STEP;
